@@ -1,154 +1,273 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cursos - Sistema de Gestão de Cursos</title>
-
-    <link rel="stylesheet" href="../css/cursos.css">
-    <link rel="stylesheet" href="../tema/tema.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-</head>
-
-<body>
-
+    <link rel="stylesheet" href="../css/cursos.css" />
+    <link rel="stylesheet" href="../tema/tema.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <!-- MENU LATERAL -->
     <aside class="barra-lateral">
-
-        <div>
-
-            <div class="logo">
-                <h2>📚 Cursos</h2>
-                <span>Painel Administrativo</span>
-            </div>
-
-            <nav class="menu">
-
-                <a href="../index.html">🏠 Dashboard</a>
-                <a href="cursos.html" class="ativo">📖 Cursos</a>
-                <a href="alunos.html">👨‍🎓 Alunos</a>
-                <a href="matriculas.html">📝 Matrículas</a>
-                <a href="notas.html">📊 Notas</a>
-                <a href="certificados.html">🏆 Certificados</a>
-
-            </nav>
-
+      <div>
+        <div class="logo">
+          <h2>📚 Cursos</h2>
+          <span>Painel Administrativo</span>
         </div>
-
-        <div class="rodape-menu">
-
-            <button id="alternarTema">
-                🌙 Tema Escuro
-            </button>
-
-        </div>
-
+        <nav class="menu">
+          <a href="../index.html">🏠 Dashboard</a>
+          <a href="cursos.html" class="ativo">📖 Cursos</a>
+          <a href="alunos.html">👨‍🎓 Alunos</a>
+          <a href="matriculas.html">📝 Matrículas</a>
+          <a href="notas.html">📊 Notas</a>
+          <a href="certificados.html">🏆 Certificados</a>
+        </nav>
+      </div>
+      <div class="rodape-menu">
+        <button id="alternarTema">🌙 Tema Escuro</button>
+      </div>
     </aside>
-
     <!-- CONTEÚDO -->
     <main class="conteudo">
-
-        <!-- CABEÇALHO -->
-        <header class="cabecalho">
-
-            <div>
-                <h1>Gerenciamento de Cursos</h1>
-                <p>Cadastre, visualize e gerencie os cursos da instituição.</p>
-            </div>
-
-        </header>
-
-        <!-- FORMULÁRIO -->
-        <section class="formulario">
-
-            <h2>Novo Curso</h2>
-
-            <form id="formCurso">
-
-                <div class="grupo-formulario">
-                    <label>Nome do Curso</label>
-                    <input type="text" id="nomeCurso" placeholder="Ex: Informática Básica" required>
-                </div>
-
-                <div class="grupo-formulario">
-                    <label>Carga Horária (Horas)</label>
-                    <input type="number" id="cargaHoraria" placeholder="Ex: 40" required>
-                </div>
-
-                <div class="grupo-formulario">
-                    <label>Professor Responsável</label>
-                    <input type="text" id="professor" placeholder="Nome do professor" required>
-                </div>
-
-                <!-- 🔥 NOVO: ESTRUTURA DO CURSO -->
-                <div class="grupo-formulario">
-                    <label>Estrutura do Curso (Módulos / Semestres / Disciplinas)</label>
-
-                    <div id="estruturaContainer"></div>
-
-                    <button type="button" class="botao" onclick="adicionarEstrutura()">
-                        + Adicionar item
-                    </button>
-                </div>
-
-                <button
-                    type="button"
-                    class="botao botao-primario"
-                    onclick="salvarCurso()">
-
-                    Salvar Curso
-
-                </button>
-
-            </form>
-
-        </section>
-
-        <!-- PESQUISA -->
-        <section class="filtro-cursos">
-
-            <input
+      <!-- CABEÇALHO -->
+      <header class="cabecalho">
+        <div>
+          <h1>Gerenciamento de Cursos</h1>
+          <p>Cadastre, personalize e gerencie os cursos da instituição.</p>
+        </div>
+      </header>
+      <!-- FORMULÁRIO -->
+      <section class="formulario">
+        <h2>Novo Curso</h2>
+        <form id="formCurso">
+          <!-- INFORMAÇÕES BÁSICAS -->
+          <div class="bloco-formulario">
+            <h3>📚 Informações Básicas</h3>
+            <div class="grupo-formulario">
+              <label>Nome do Curso</label>
+              <input
                 type="text"
-                id="pesquisaCurso"
-                placeholder="🔍 Pesquisar curso...">
+                id="nomeCurso"
+                placeholder="Ex: Informática Básica"
+                required
+              />
+            </div>
+            <div class="grupo-formulario">
+              <label>Descrição</label>
+              <textarea
+                id="descricaoCurso"
+                placeholder="Descreva o curso"
+              ></textarea>
+            </div>
+            <div class="grupo-formulario">
+              <label>Professor Responsável</label>
+              <input
+                type="text"
+                id="professor"
+                placeholder="Nome do professor"
+              />
+            </div>
+            <div class="grupo-formulario">
+              <label>Carga Horária (Horas)</label>
+              <input type="number" id="cargaHoraria" placeholder="Ex: 120" />
+            </div>
+            <div class="grupo-formulario">
+              <label>Limite de Alunos</label>
+              <input type="number" id="limiteAlunos" placeholder="Ex: 30" />
+            </div>
+          </div>
+          
+          <!-- organizaçao academica -->
+          <div class="bloco-formulario">
 
-        </section>
+    <h3>🏗 Organização Acadêmica</h3>
 
-        <!-- LISTAGEM -->
-        <section class="tabela-container">
+    <div class="grupo-formulario">
 
-            <table>
+        <label>Modelo do Curso</label>
 
-                <thead>
+        <select id="modeloCurso">
 
-                    <tr>
-                        <th>Curso</th>
-                        <th>Carga Horária</th>
-                        <th>Professor</th>
-                        <th>Ações</th>
-                    </tr>
+            <option value="curso-unico">Curso Único</option>
 
-                </thead>
+            <option value="modular">Modular</option>
 
-                <tbody id="listaCursos">
-                    <!-- JS -->
-                </tbody>
+            <option value="semestral">Semestral</option>
 
-            </table>
+            <option value="trimestral">Trimestral</option>
 
-        </section>
+            <option value="bimestral">Bimestral</option>
 
+            <option value="personalizado">Personalizado</option>
+
+        </select>
+
+    </div>
+
+    <div class="grupo-formulario">
+
+        <label>Quantidade de Etapas</label>
+
+        <input
+            type="number"
+            id="quantidadeEstruturas"
+            min="1"
+            value="1"
+            placeholder="Ex: 4">
+
+    </div>
+
+    <div class="grupo-formulario">
+
+        <label>Nome da Estrutura (apenas para Personalizado)</label>
+
+        <input
+            type="text"
+            id="nomeEstrutura"
+            placeholder="Ex: Etapa, Nível, Ciclo">
+
+    </div>
+
+</div>
+          <!-- DISCIPLINAS -->
+
+<div class="bloco-formulario">
+
+    <h3>📖 Disciplinas</h3>
+
+    <p class="texto-ajuda">
+
+        Adicione disciplinas e vincule cada uma
+        ao módulo, semestre ou período desejado.
+
+    </p>
+
+    <div id="disciplinasContainer"></div>
+
+    <button
+        type="button"
+        class="botao botao-adicionar"
+        onclick="adicionarDisciplina()">
+
+        + Adicionar Disciplina
+
+    </button>
+
+</div>
+          <!-- AVALIAÇÃO -->
+          <div class="bloco-formulario">
+            <h3>📊 Avaliação</h3>
+            <div class="grupo-formulario">
+              <label>Tipo de Avaliação</label>
+              <select id="tipoAvaliacao">
+                <option>Média Simples</option>
+                <option>Média Ponderada</option>
+                <option>Nota Única</option>
+                <option>Conceitos</option>
+              </select>
+            </div>
+            <div class="grupo-formulario">
+              <label>Nota Mínima</label>
+              <input
+                type="number"
+                step="0.1"
+                id="notaMinima"
+                placeholder="Ex: 7.0"
+              />
+            </div>
+          </div>
+          <!-- FREQUÊNCIA -->
+          <div class="bloco-formulario">
+            <h3>📅 Frequência</h3>
+            <div class="grupo-formulario">
+              <label>Frequência Mínima (%)</label>
+              <input type="number" id="frequenciaMinima" placeholder="Ex: 75" />
+            </div>
+          </div>
+          <!-- CERTIFICAÇÃO -->
+          <div class="bloco-formulario">
+            <h3>🏆 Certificação</h3>
+            <div class="grupo-formulario">
+              <label>Texto do Certificado</label>
+              <textarea
+                id="textoCertificado"
+                placeholder="Texto que aparecerá no certificado"
+              ></textarea>
+            </div>
+          </div>
+          <button
+            type="button"
+            class="botao botao-primario"
+            onclick="salvarCurso()"
+          >
+            Salvar Curso
+          </button>
+        </form>
+      </section>
+      <!-- PESQUISA -->
+      <section class="filtro-cursos">
+        <input
+          type="text"
+          id="pesquisaCurso"
+          placeholder="Pesquisar curso..."
+        />
+        <button class="botao botao-primario" onclick="pesquisarCurso()">
+          Buscar
+        </button>
+      </section>
+      <!-- LISTAGEM -->
+      <section class="tabela-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Modelo</th>
+              <th>Carga Horária</th>
+              <th>Professor</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="listaCursos">
+            <!-- JS -->
+          </tbody>
+        </table>
+      </section>
     </main>
-
+    <!-- MODAL DE DETALHES -->
+    <div id="modalDetalhes" class="modal">
+      <div class="modal-conteudo">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+          "
+        >
+          <h2 id="tituloModal">Detalhes do Curso</h2>
+          <button
+            onclick="fecharModal()"
+            style="
+              border: none;
+              background: none;
+              font-size: 24px;
+              cursor: pointer;
+              color: inherit;
+            "
+          >
+            ✕
+          </button>
+        </div>
+        <div id="conteudoModal"></div>
+      </div>
+    </div>
     <!-- SCRIPTS -->
     <script src="../tema/tema.js"></script>
     <script src="../js/cursos.js"></script>
-
-</body>
-
+  </body>
 </html>

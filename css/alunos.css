@@ -1,33 +1,22 @@
 /* =======================================================
-   SISTEMA DE ALUNOS - CSS COMPLETO (INDEPENDENTE)
+   RESET BASE (SEM CONFLITO)
 ======================================================= */
 
-/* RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
+    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* BODY */
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    min-height: 100vh;
-    display: flex;
-}
+/* =======================================================
+   TEMA
+======================================================= */
 
-/* VARIÁVEIS */
 :root {
     --cor-fundo: #f5f7fa;
     --cor-sidebar: #ffffff;
@@ -38,156 +27,153 @@ body {
 
     --cor-borda: #e5e7eb;
 
-    --cor-destaque: #000000;
+    --cor-destaque: #111827;
 
-    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --sombra-hover: 0 12px 30px rgba(0, 0, 0, 0.12);
-
-    --transicao: 0.3s ease;
+    --sombra: 0 4px 12px rgba(0,0,0,.08);
+    --sombra-hover: 0 12px 30px rgba(0,0,0,.12);
 }
 
-/* SIDEBAR */
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+    min-height: 100vh;
+    display: flex;
+}
+
+/* TEMA ESCURO */
+body.escuro {
+    --cor-fundo: #0f1115;
+    --cor-sidebar: #161b22;
+    --cor-card: #1d232d;
+
+    --cor-texto: #ffffff;
+    --cor-texto-secundario: #9ca3af;
+
+    --cor-borda: #2f3742;
+
+    --cor-destaque: #ffffff;
+
+    --sombra: 0 4px 12px rgba(0,0,0,.4);
+    --sombra-hover: 0 12px 30px rgba(0,0,0,.5);
+}
+
+/* =======================================================
+   LAYOUT
+======================================================= */
+
 .barra-lateral {
     width: 280px;
     min-height: 100vh;
     background: var(--cor-sidebar);
     border-right: 1px solid var(--cor-borda);
     padding: 30px 20px;
-
     position: fixed;
     left: 0;
     top: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.logo {
-    text-align: center;
-}
-
-.logo h2 {
-    font-size: 28px;
-    font-weight: 700;
-}
-
-.logo span {
-    color: var(--cor-texto-secundario);
-    font-size: 14px;
-}
-
-.menu {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--cor-texto);
-    padding: 14px 18px;
-    border-radius: 12px;
-
-    display: flex;
-    gap: 12px;
-}
-
-.menu a:hover {
-    background: #f3f4f6;
-    transform: translateX(5px);
-}
-
-.menu a.ativo {
-    background: #111827;
-    color: white;
-}
-
-.rodape-menu {
-    margin-top: 30px;
-}
-
-#alternarTema {
-    width: 100%;
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    cursor: pointer;
-
-    background: #111827;
-    color: white;
-}
-
-/* CONTEÚDO */
 .conteudo {
     flex: 1;
     margin-left: 280px;
     padding: 35px;
 }
 
-/* CABEÇALHO */
-.cabecalho {
-    margin-bottom: 25px;
-}
+/* =======================================================
+   MENU
+======================================================= */
 
-.cabecalho h1 {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.cabecalho p {
-    color: var(--cor-texto-secundario);
-}
-
-/* FORMULÁRIO */
-.formulario {
-    background: var(--cor-card);
-    border: 1px solid var(--cor-borda);
-    border-radius: 18px;
-    padding: 25px;
-    box-shadow: var(--sombra);
-    margin-bottom: 25px;
-}
-
-.grupo-formulario {
+.menu {
     display: flex;
     flex-direction: column;
-    margin-bottom: 18px;
+    gap: 10px;
+    margin-top: 30px;
 }
 
-.grupo-formulario label {
-    margin-bottom: 8px;
-    font-weight: 600;
+.menu a {
+    color: var(--cor-texto);
+    text-decoration: none;
+    padding: 12px 16px;
+    border-radius: 10px;
 }
 
-.grupo-formulario input {
-    padding: 14px;
+.menu a:hover {
+    background: rgba(0,0,0,.05);
+}
+
+.menu a.ativo {
+    background: var(--cor-destaque);
+    color: #fff;
+}
+
+/* =======================================================
+   BOTÕES (REGRA ÚNICA — SEM CONFLITO)
+======================================================= */
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+
     border-radius: 12px;
+    padding: 10px 14px;
+
+    border: 1px solid var(--cor-borda);
+    background: var(--cor-card);
+    color: var(--cor-texto);
+
+    transition: .2s ease;
+}
+
+/* hover geral */
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--sombra-hover);
+}
+
+/* botão primário */
+.botao-primario {
+    background: var(--cor-destaque);
+    color: #fff;
+    border: none;
+}
+
+/* =======================================================
+   🔥 BUSCAR (CORRIGIDO DEFINITIVAMENTE)
+======================================================= */
+
+.filtro-cursos {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.filtro-cursos input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
     border: 1px solid var(--cor-borda);
     background: var(--cor-card);
     color: var(--cor-texto);
 }
 
-/* BOTÃO */
-.botao {
+/* IMPORTANTE: sem cor fixa */
+.filtro-cursos button {
+    background: var(--cor-destaque);
+    color: #fff;
     border: none;
-    padding: 14px 22px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
 }
 
-.botao-primario {
-    background: #111827;
-    color: white;
-}
+/* =======================================================
+   TABELA
+======================================================= */
 
-/* TABELA */
 .tabela-container {
     background: var(--cor-card);
     border: 1px solid var(--cor-borda);
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: var(--sombra);
 }
@@ -198,57 +184,42 @@ table {
 }
 
 thead {
-    background: #111827;
-    color: white;
+    background: var(--cor-destaque);
+    color: #fff;
 }
 
 th, td {
-    padding: 16px;
+    padding: 14px;
     text-align: left;
-}
-
-td {
     border-bottom: 1px solid var(--cor-borda);
 }
 
-tbody tr:hover {
-    background: rgba(0,0,0,0.03);
-}
+/* =======================================================
+   SIDEBAR BOTÃO TEMA
+======================================================= */
 
-/* BOTÕES AÇÃO */
-.acao-editar {
-    background: #2563eb;
-    color: white;
+#alternarTema {
+    width: 100%;
+    background: var(--cor-destaque);
+    color: #fff;
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-right: 6px;
 }
 
-.acao-excluir {
-    background: #dc2626;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-}
+/* =======================================================
+   RESPONSIVO
+======================================================= */
 
-/* RESPONSIVO */
 @media (max-width: 768px) {
-
     .barra-lateral {
-        width: 100%;
         position: relative;
+        width: 100%;
     }
 
     .conteudo {
         margin-left: 0;
     }
 
-    table {
-        display: block;
-        overflow-x: auto;
+    .filtro-cursos {
+        flex-direction: column;
     }
 }

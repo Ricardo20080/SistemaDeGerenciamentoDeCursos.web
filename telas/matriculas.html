@@ -1,11 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Matrículas</title>
+
+    <link rel="stylesheet" href="../css/matriculas.css">
+    <link rel="stylesheet" href="../tema/tema.css">
 </head>
+
 <body>
-    
+
+<aside class="barra-lateral">
+    <div>
+        <div class="logo">
+            <h2>📚 Matrículas</h2>
+            <span>Painel Administrativo</span>
+        </div>
+
+        <nav class="menu">
+            <a href="../index.html">🏠 Dashboard</a>
+            <a href="cursos.html">📖 Cursos</a>
+            <a href="alunos.html">👨‍🎓 Alunos</a>
+            <a href="matriculas.html" class="ativo">📝 Matrículas</a>
+            <a href="notas.html">📊 Notas</a>
+            <a href="certificados.html">🏆 Certificados</a>
+        </nav>
+    </div>
+
+    <div class="rodape-menu">
+        <button id="alternarTema">🌙 Tema Escuro</button>
+    </div>
+</aside>
+
+<main class="conteudo">
+
+    <header class="cabecalho">
+        <div>
+            <h1>Matrículas</h1>
+            <p>Cadastro completo de alunos e vínculos com cursos</p>
+        </div>
+    </header>
+
+    <!-- FORMULÁRIO -->
+    <section class="formulario">
+
+        <h2>Nova Matrícula</h2>
+
+        <div class="grupo-formulario">
+            <label>Nome completo</label>
+            <input id="nome" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>CPF</label>
+            <input id="cpf" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>RG</label>
+            <input id="rg" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Data de nascimento</label>
+            <input id="nascimento" type="date">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Telefone</label>
+            <input id="telefone" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Email</label>
+            <input id="email" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Endereço</label>
+            <input id="endereco" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Curso</label>
+            <input id="curso" type="text">
+        </div>
+
+        <div class="grupo-formulario">
+            <label>Status</label>
+            <select id="status">
+                <option value="ativa">Ativa</option>
+                <option value="trancada">Trancada</option>
+                <option value="concluida">Concluída</option>
+                <option value="cancelada">Cancelada</option>
+            </select>
+        </div>
+
+        <button onclick="salvarMatricula()" class="botao botao-primario">
+            Salvar Matrícula
+        </button>
+
+    </section>
+
+    <!-- BUSCA -->
+    <section class="filtro-cursos">
+
+        <input id="buscaId" placeholder="Buscar por ID da matrícula">
+
+        <button class="botao botao-primario" onclick="buscarMatricula()">
+            Buscar
+        </button>
+
+    </section>
+
+    <!-- TABELA -->
+    <section class="tabela-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista"></tbody>
+        </table>
+
+    </section>
+
+</main>
+
+<!-- MODAL -->
+<div id="modal" style="display:none;">
+    <div>
+        <h2 id="titulo"></h2>
+        <div id="conteudo"></div>
+        <button onclick="fechar()">Fechar</button>
+    </div>
+</div>
+
+<script src="../tema/tema.js"></script>
+<script src="../js/matriculas.js"></script>
+
 </body>
 </html>

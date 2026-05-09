@@ -1,11 +1,9 @@
 // ======================================================
-// DASHBOARD
+// DASHBOARD CORRIGIDO
 // ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-
     atualizarDashboard();
-
 });
 
 function atualizarDashboard() {
@@ -13,32 +11,35 @@ function atualizarDashboard() {
     const cursos =
         JSON.parse(localStorage.getItem("cursos")) || [];
 
-    const alunos =
-        JSON.parse(localStorage.getItem("alunos")) || [];
-
     const matriculas =
         JSON.parse(localStorage.getItem("matriculas")) || [];
 
     const certificados =
         JSON.parse(localStorage.getItem("certificados")) || [];
 
-    const totalCursos =
-        document.getElementById("totalCursos");
+    // alunos = derivados das matrículas (SEM STORAGE)
+    const alunos = new Map();
 
-    const totalAlunos =
-        document.getElementById("totalAlunos");
+    matriculas.forEach(m => {
+        if (!m.id) return;
 
-    const totalMatriculas =
-        document.getElementById("totalMatriculas");
+        alunos.set(m.id, {
+            id: m.id,
+            nome: m.nome,
+            curso: m.curso
+        });
+    });
 
-    const totalCertificados =
-        document.getElementById("totalCertificados");
+    const totalCursos = document.getElementById("totalCursos");
+    const totalAlunos = document.getElementById("totalAlunos");
+    const totalMatriculas = document.getElementById("totalMatriculas");
+    const totalCertificados = document.getElementById("totalCertificados");
 
     if (totalCursos)
         totalCursos.textContent = cursos.length;
 
     if (totalAlunos)
-        totalAlunos.textContent = alunos.length;
+        totalAlunos.textContent = alunos.size; // 🔥 CORRETO
 
     if (totalMatriculas)
         totalMatriculas.textContent = matriculas.length;

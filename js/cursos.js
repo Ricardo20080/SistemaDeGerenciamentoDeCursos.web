@@ -1,175 +1,502 @@
-let cursos = JSON.parse(localStorage.getItem("cursos")) || [];
-let editandoId = null;
+let cursos =
+    JSON.parse(localStorage.getItem("cursos")) || [];
 
-// -----------------------------
-// ADICIONAR ESTRUTURA
-// -----------------------------
+let cursoEditando = null;
+
+/* =====================================
+   ESTRUTURAS
+===================================== */
+
 function adicionarEstrutura() {
 
-    const container = document.getElementById("estruturaContainer");
+    const container =
+        document.getElementById("estruturaContainer");
 
-    const div = document.createElement("div");
-    div.classList.add("item-estrutura");
+    const div =
+        document.createElement("div");
+
+    div.className = "item-estrutura";
 
     div.innerHTML = `
-        <input placeholder="Nome (Módulo/Semestre/Disciplina)">
-        <input placeholder="Descrição">
-        <button type="button" onclick="this.parentElement.remove()">X</button>
+        <input
+            type="text"
+            placeholder="Nome da estrutura">
+
+        <button
+            type="button"
+            class="botao"
+            onclick="this.parentElement.remove()">
+
+            Remover
+
+        </button>
     `;
 
     container.appendChild(div);
+
 }
 
-// -----------------------------
-// SALVAR CURSO
-// -----------------------------
+/* =====================================
+   DISCIPLINAS
+===================================== */
+
+function adicionarDisciplina() {
+
+    const container =
+        document.getElementById("disciplinasContainer");
+
+    const div =
+        document.createElement("div");
+
+    div.className = "item-disciplina";
+
+    div.innerHTML = `
+        <input
+            type="text"
+            placeholder="Nome da disciplina">
+
+        <input
+            type="text"
+            placeholder="Professor">
+
+        <input
+            type="number"
+            placeholder="Carga Horária">
+
+        <input
+            type="text"
+            placeholder="Estrutura (Ex: Módulo 1)">
+
+        <button
+            type="button"
+            class="botao"
+            onclick="this.parentElement.remove()">
+
+            Remover
+
+        </button>
+    `;
+
+    container.appendChild(div);
+
+}
+
+/* =====================================
+   SALVAR CURSO
+===================================== */
+
 function salvarCurso() {
 
-    const nome = document.getElementById("nomeCurso").value;
-    const tipo = document.getElementById("tipoCurso").value;
-    const carga = document.getElementById("cargaHoraria").value;
-    const professor = document.getElementById("professor").value;
+    const nome =
+        document.getElementById("nomeCurso").value.trim();
 
-    const itens = document.querySelectorAll("#estruturaContainer .item-estrutura");
+    if(nome === "") {
 
-    let estrutura = [];
+        alert("Informe o nome do curso.");
+        return;
 
-    itens.forEach(item => {
-
-        const inputs = item.querySelectorAll("input");
-
-        estrutura.push({
-            nome: inputs[0].value,
-            descricao: inputs[1].value
-        });
-    });
-
-    const curso = {
-        id: editandoId ? editandoId : Date.now(),
-        nome,
-        tipo,
-        cargaHoraria: carga,
-        professor,
-        estrutura
-    };
-
-    if (editandoId) {
-
-        cursos = cursos.map(c =>
-            c.id === editandoId ? curso : c
-        );
-
-        editandoId = null;
-
-    } else {
-        cursos.push(curso);
     }
 
-    localStorage.setItem("cursos", JSON.stringify(cursos));
+    const estruturas = [];
 
-    limparFormulario();
-    listarCursos();
-}
+    document
+        .querySelectorAll(".item-estrutura input")
+        .forEach(input => {
 
-// -----------------------------
-// LISTAR CURSOS
-// -----------------------------
-function listarCursos() {
+            if(input.value.trim() !== "") {
 
-    const tabela = document.getElementById("listaCursos");
+                estruturas.push(
+                    input.value.trim()
+                );
 
-    tabela.innerHTML = "";
+            }
 
-    cursos.forEach(curso => {
-
-        const tr = document.createElement("tr");
-
-        tr.innerHTML = `
-            <td>${curso.nome}</td>
-            <td>${curso.cargaHoraria}h</td>
-            <td>${curso.professor}</td>
-            <td>
-                <button class="acao-editar" onclick="editarCurso(${curso.id})">Editar</button>
-                <button class="acao-excluir" onclick="excluirCurso(${curso.id})">Excluir</button>
-            </td>
-        `;
-
-        tabela.appendChild(tr);
-
-        // linha de detalhes
-        const tr2 = document.createElement("tr");
-
-        let estruturaHTML = "";
-
-        curso.estrutura.forEach(e => {
-            estruturaHTML += `<li><strong>${e.nome}</strong> - ${e.descricao}</li>`;
         });
 
-        tr2.innerHTML = `
-            <td colspan="4">
-                <div class="detalhes">
-                    <h4>Estrutura do Curso (${curso.tipo})</h4>
-                    <ul>${estruturaHTML}</ul>
-                </div>
-            </td>
-        `;
+    const disciplinas = [];
 
-        tabela.appendChild(tr2);
-    });
+    document
+        .querySelectorAll(".item-disciplina")
+        .forEach(item => {
+
+            const campos =
+                item.querySelectorAll("input");
+
+            disciplinas.push({
+
+                nome:
+                    campos[0].value,
+
+                professor:
+                    campos[1].value,
+
+                cargaHoraria:
+                    campos[2].value,
+
+                estrutura:
+                    campos[3].value
+
+            });
+
+        });
+
+    const curso = {
+
+        id:
+            cursoEditando || Date.now(),
+
+        nome:
+            nome,
+
+        descricao:
+            document.getElementById("descricaoCurso").value,
+
+        professor:
+            document.getElementById("professor").value,
+
+        cargaHoraria:
+            document.getElementById("cargaHoraria").value,
+
+        limiteAlunos:
+            document.getElementById("limiteAlunos").value,
+
+        modelo:
+            document.getElementById("modeloCurso").value,
+
+        tipoAvaliacao:
+            document.getElementById("tipoAvaliacao").value,
+
+        notaMinima:
+            document.getElementById("notaMinima").value,
+
+        frequenciaMinima:
+            document.getElementById("frequenciaMinima").value,
+
+        textoCertificado:
+            document.getElementById("textoCertificado").value,
+
+        estruturas:
+            estruturas,
+
+        disciplinas:
+            disciplinas
+
+    };
+
+    if(cursoEditando) {
+
+        cursos =
+            cursos.map(c =>
+                c.id === cursoEditando
+                    ? curso
+                    : c
+            );
+
+    } else {
+
+        cursos.push(curso);
+
+    }
+
+    localStorage.setItem(
+        "cursos",
+        JSON.stringify(cursos)
+    );
+
+    limparFormulario();
+
+    renderizarCursos();
+
+    alert("Curso salvo com sucesso!");
+
 }
 
-// -----------------------------
-// EDITAR
-// -----------------------------
-function editarCurso(id) {
+/* =====================================
+   LISTAGEM
+===================================== */
 
-    const curso = cursos.find(c => c.id === id);
+function renderizarCursos(lista = cursos) {
 
-    document.getElementById("nomeCurso").value = curso.nome;
-    document.getElementById("tipoCurso").value = curso.tipo;
-    document.getElementById("cargaHoraria").value = curso.cargaHoraria;
-    document.getElementById("professor").value = curso.professor;
+    const tbody =
+        document.getElementById("listaCursos");
 
-    document.getElementById("estruturaContainer").innerHTML = "";
+    if(!tbody) return;
 
-    curso.estrutura.forEach(e => {
+    tbody.innerHTML = "";
 
-        const div = document.createElement("div");
+    lista.forEach(curso => {
 
-        div.classList.add("item-estrutura");
+        tbody.innerHTML += `
+            <tr>
 
-        div.innerHTML = `
-            <input value="${e.nome}">
-            <input value="${e.descricao}">
-            <button type="button" onclick="this.parentElement.remove()">X</button>
+                <td>${curso.nome}</td>
+
+                <td>${curso.modelo}</td>
+
+                <td>${curso.cargaHoraria}h</td>
+
+                <td>${curso.professor}</td>
+
+                <td>
+
+                    <button
+                        class="botao"
+                        onclick="visualizarCurso(${curso.id})">
+
+                        Ver
+
+                    </button>
+
+                    <button
+                        class="botao"
+                        onclick="editarCurso(${curso.id})">
+
+                        Editar
+
+                    </button>
+
+                    <button
+                        class="botao"
+                        onclick="excluirCurso(${curso.id})">
+
+                        Excluir
+
+                    </button>
+
+                </td>
+
+            </tr>
         `;
 
-        document.getElementById("estruturaContainer").appendChild(div);
     });
 
-    editandoId = id;
 }
 
-// -----------------------------
-// EXCLUIR
-// -----------------------------
+/* =====================================
+   PESQUISA
+===================================== */
+
+function pesquisarCurso() {
+
+    const texto =
+        document
+            .getElementById("pesquisaCurso")
+            .value
+            .toLowerCase();
+
+    const resultado =
+        cursos.filter(curso =>
+
+            curso.nome
+                .toLowerCase()
+                .includes(texto)
+
+        );
+
+    renderizarCursos(resultado);
+
+}
+
+/* =====================================
+   VISUALIZAR
+===================================== */
+
+function visualizarCurso(id) {
+
+    const curso =
+        cursos.find(c => c.id === id);
+
+    if (!curso) return;
+
+    let disciplinasHTML = "";
+
+    curso.disciplinas.forEach(d => {
+
+        disciplinasHTML += `
+            <li>
+                <strong>${d.nome}</strong>
+                (${d.cargaHoraria}h)
+                ${d.professor ? `- ${d.professor}` : ""}
+            </li>
+        `;
+
+    });
+
+    document.getElementById("tituloModal")
+        .textContent = curso.nome;
+
+    document.getElementById("conteudoModal")
+        .innerHTML = `
+
+            <h3>📚 Informações Gerais</h3>
+
+            <p><strong>Professor:</strong> ${curso.professor}</p>
+
+            <p><strong>Carga Horária:</strong> ${curso.cargaHoraria}h</p>
+
+            <p><strong>Modelo:</strong> ${curso.modelo}</p>
+
+            <p><strong>Limite de Alunos:</strong> ${curso.limiteAlunos}</p>
+
+            <p><strong>Descrição:</strong> ${curso.descricao}</p>
+
+            <hr>
+
+            <h3>📖 Disciplinas</h3>
+
+            <ul>
+                ${disciplinasHTML || "<li>Nenhuma disciplina cadastrada.</li>"}
+            </ul>
+
+            <hr>
+
+            <h3>📊 Avaliação</h3>
+
+            <p>
+                <strong>Tipo:</strong>
+                ${curso.tipoAvaliacao}
+            </p>
+
+            <p>
+                <strong>Nota Mínima:</strong>
+                ${curso.notaMinima}
+            </p>
+
+            <hr>
+
+            <h3>📅 Frequência</h3>
+
+            <p>
+                <strong>Frequência Mínima:</strong>
+                ${curso.frequenciaMinima}%
+            </p>
+
+            <hr>
+
+            <h3>🏆 Certificação</h3>
+
+            <p>
+                ${curso.textoCertificado || "Certificado habilitado para emissão."}
+            </p>
+
+    `;
+
+    document
+        .getElementById("modalDetalhes")
+        .style.display = "flex";
+
+}
+
+function fecharModal() {
+
+    document
+        .getElementById("modalDetalhes")
+        .style.display = "none";
+
+}
+
+/* =====================================
+   EXCLUIR
+===================================== */
+
 function excluirCurso(id) {
 
-    cursos = cursos.filter(c => c.id !== id);
+    if(!confirm("Deseja excluir este curso?"))
+        return;
 
-    localStorage.setItem("cursos", JSON.stringify(cursos));
+    cursos =
+        cursos.filter(c => c.id !== id);
 
-    listarCursos();
+    localStorage.setItem(
+        "cursos",
+        JSON.stringify(cursos)
+    );
+
+    renderizarCursos();
+
 }
 
-// -----------------------------
-// LIMPAR FORM
-// -----------------------------
+/* =====================================
+   EDITAR
+===================================== */
+
+function editarCurso(id) {
+
+    const curso =
+        cursos.find(c => c.id === id);
+
+    if(!curso) return;
+
+    cursoEditando = id;
+
+    document.getElementById("nomeCurso").value =
+        curso.nome;
+
+    document.getElementById("descricaoCurso").value =
+        curso.descricao;
+
+    document.getElementById("professor").value =
+        curso.professor;
+
+    document.getElementById("cargaHoraria").value =
+        curso.cargaHoraria;
+
+    document.getElementById("limiteAlunos").value =
+        curso.limiteAlunos;
+
+    document.getElementById("modeloCurso").value =
+        curso.modelo;
+
+    document.getElementById("tipoAvaliacao").value =
+        curso.tipoAvaliacao;
+
+    document.getElementById("notaMinima").value =
+        curso.notaMinima;
+
+    document.getElementById("frequenciaMinima").value =
+        curso.frequenciaMinima;
+
+    document.getElementById("textoCertificado").value =
+        curso.textoCertificado;
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+/* =====================================
+   LIMPAR
+===================================== */
+
 function limparFormulario() {
 
-    document.getElementById("formCurso").reset();
-    document.getElementById("estruturaContainer").innerHTML = "";
+    document
+        .getElementById("formCurso")
+        .reset();
+
+    document
+        .getElementById("estruturaContainer")
+        .innerHTML = "";
+
+    document
+        .getElementById("disciplinasContainer")
+        .innerHTML = "";
+
+    cursoEditando = null;
+
 }
 
-// init
-listarCursos();
+/* =====================================
+   INICIAR
+===================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        renderizarCursos();
+
+    }
+);

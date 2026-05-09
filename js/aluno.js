@@ -1,92 +1,101 @@
-// =======================================================
-// SISTEMA DE ALUNOS - CRUD COMPLETO
-// =======================================================
+let alunos = [];
 
-let alunos = JSON.parse(localStorage.getItem("alunos")) || [];
+/* =========================
+PEGAR MATRICULAS E GERAR ALUNOS
+========================= */
 
-// SALVAR NO LOCALSTORAGE
-function salvarAlunos() {
-    localStorage.setItem("alunos", JSON.stringify(alunos));
-}
+function carregarAlunos() {
+    const matriculas = JSON.parse(localStorage.getItem("matriculas")) || [];
 
-// CREATE (CRIAR)
-function cadastrarAluno() {
+    // transforma matrículas em alunos únicos
+    const mapa = new Map();
 
-    const nome = document.getElementById("nomeAluno").value.trim();
-    const idade = document.getElementById("idadeAluno").value.trim();
-    const email = document.getElementById("emailAluno").value.trim();
+    matriculas.forEach(m => {
+        if (!m.id) return;
 
-    if (!nome || !idade || !email) {
-        alert("Preencha todos os campos!");
-        return;
-    }
-
-    alunos.push({
-        nome,
-        idade,
-        email
+        mapa.set(m.id, {
+            id: m.id,
+            nome: m.nome,
+            curso: m.curso
+        });
     });
 
-    salvarAlunos();
-    renderizarAlunos();
-    limparCampos();
+    alunos = Array.from(mapa.values());
+
+    renderAlunos(alunos);
 }
 
-// READ (LISTAR)
-function renderizarAlunos() {
+/* =========================
+RENDER
+========================= */
 
-    const tabela = document.getElementById("listaAlunos");
+function renderAlunos(lista) {
+    const tbody = document.getElementById("listaAlunos");
+    if (!tbody) return;
 
-    tabela.innerHTML = "";
+    tbody.innerHTML = "";
 
-    alunos.forEach((aluno, index) => {
-
-        tabela.innerHTML += `
+    lista.forEach(a => {
+        tbody.innerHTML += `
             <tr>
-                <td>${aluno.nome}</td>
-                <td>${aluno.idade}</td>
-                <td>${aluno.email}</td>
+                <td>${a.nome}</td>
+                <td>${a.id}</td>
+                <td>${a.curso}</td>
                 <td>
-                    <button class="acao-editar" onclick="editarAluno(${index})">Editar</button>
-                    <button class="acao-excluir" onclick="excluirAluno(${index})">Excluir</button>
+                    <button class="botao" onclick="removerAluno('${a.id}')">
+                        Excluir
+                    </button>
                 </td>
             </tr>
         `;
     });
 }
 
-// DELETE (EXCLUIR)
-function excluirAluno(index) {
+/* =========================
+BUSCAR POR NOME
+========================= */
 
-    if (confirm("Deseja excluir este aluno?")) {
+function buscarAluno() {
+    const termo = document.getElementById("buscaAluno").value.trim().toLowerCase();
 
-        alunos.splice(index, 1);
-        salvarAlunos();
-        renderizarAlunos();
+    if (!termo) {
+        renderAlunos(alunos);
+        return;
     }
+
+    const filtrados = alunos.filter(a =>
+        a.nome.toLowerCase().includes(termo)
+    );
+
+    renderAlunos(filtrados);
 }
 
-// UPDATE (EDITAR)
-function editarAluno(index) {
+/* =========================
+REMOVER ALUNO (remove matrícula também)
+========================= */
 
-    const aluno = alunos[index];
+function removerAluno(id) {
+    let matriculas = JSON.parse(localStorage.getItem("matriculas")) || [];
 
-    document.getElementById("nomeAluno").value = aluno.nome;
-    document.getElementById("idadeAluno").value = aluno.idade;
-    document.getElementById("emailAluno").value = aluno.email;
+    matriculas = matriculas.filter(m => m.id !== id);
 
-    alunos.splice(index, 1);
+    localStorage.setItem("matriculas", JSON.stringify(matriculas));
 
-    salvarAlunos();
-    renderizarAlunos();
+    carregarAlunos(); // atualiza tudo
 }
 
-// LIMPAR CAMPOS
-function limparCampos() {
-    document.getElementById("nomeAluno").value = "";
-    document.getElementById("idadeAluno").value = "";
-    document.getElementById("emailAluno").value = "";
-}
+/* =========================
+AUTO UPDATE (quando salvar matrícula)
+========================= */
 
-// INICIALIZAR
-document.addEventListener("DOMContentLoaded", renderizarAlunos);
+window.addEventListener("storage", (e) => {
+    if (e.key === "matriculas") {
+        carregarAlunos();
+    }
+});
+
+/* =========================
+INIT
+========================= */
+
+document.addEventListener("DOMContentLoaded", carregarAlunos);
