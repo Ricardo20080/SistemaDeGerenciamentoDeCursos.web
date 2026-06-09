@@ -1,0 +1,76 @@
+/* =======================================================
+   MODO ESCURO
+======================================================= */
+
+body.escuro {
+
+    --cor-fundo: #0f1115;
+
+    --cor-sidebar: #161b22;
+
+    --cor-card: #1d232d;
+
+    --cor-texto: #ffffff;
+
+    --cor-texto-secundario: #9ca3af;
+
+    --cor-borda: #2f3742;
+
+    --cor-destaque: #ffffff;
+
+    --sombra: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+    --sombra-hover: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* =======================================================
+   AJUSTES EXTRAS MODO ESCURO
+======================================================= */
+
+body.escuro .menu a:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+body.escuro .menu a.ativo {
+    background: white;
+    color: black;
+}
+
+/* Botão de troca de tema */
+
+body.escuro #alternarTema {
+    background: white;
+    color: black;
+}
+
+/* Caso alguma tela utilize botão primário */
+
+body.escuro .botao-primario {
+    background: white;
+    color: black;
+}
+
+/* Tabelas */
+
+body.escuro thead {
+    background: #111111;
+}
+
+body.escuro tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Scrollbar */
+
+body.escuro ::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+body.escuro ::-webkit-scrollbar-thumb {
+    background: #6b7280;
+    border-radius: 20px;
+}
+
+body.escuro ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
+}

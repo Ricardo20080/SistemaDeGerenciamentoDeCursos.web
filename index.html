@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Sistema de Gestão de Cursos</title>
+
+<!--
+    Arquivos CSS
+    estilo.css = estilos gerais
+    tema.css = modo claro/escuro
+-->
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="tema/tema.css">
+
+<!-- Fonte moderna -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+
+<!-- ===================================================== -->
+<!-- SIDEBAR -->
+<!-- ===================================================== -->
+
+<aside class="barra-lateral">
+
+    <div class="logo">
+        <h2>📚 Cursos</h2>
+        <span>Painel Administrativo</span>
+    </div>
+
+    <nav class="menu">
+
+        <a href="index.html" class="ativo">
+            🏠 Dashboard
+        </a>
+
+        <a href="telas/cursos.html">
+            📖 Cursos
+        </a>
+
+        <a href="telas/alunos.html">
+            👨‍🎓 Alunos
+        </a>
+
+        <a href="telas/matriculas.html">
+            📝 Matrículas
+        </a>
+
+        <a href="telas/notas.html">
+            📊 Notas
+        </a>
+
+        <a href="telas/certificados.html">
+            🏆 Certificados
+        </a>
+
+    </nav>
+
+    <div class="rodape-menu">
+        <button id="alternarTema">
+            🌙 Alterar Tema
+        </button>
+    </div>
+
+</aside>
+
+<!-- ===================================================== -->
+<!-- CONTEÚDO -->
+<!-- ===================================================== -->
+
+<main class="conteudo">
+
+    <!-- CABEÇALHO -->
+
+    <header class="cabecalho">
+
+        <div>
+            <h1>Sistema de Gestão de Cursos</h1>
+            <p>
+                Gerencie cursos, alunos, matrículas,
+                notas e certificados.
+            </p>
+        </div>
+
+        <div class="usuario">
+            <span>👤 Diretor</span>
+        </div>
+
+    </header>
+
+    <!-- CARDS DE ESTATÍSTICAS -->
+
+    <section class="cards">
+
+        <div class="card">
+
+            <div class="icone">
+                📖
+            </div>
+
+            <div>
+                <h3 id="totalCursos">0</h3>
+                <p>Cursos Cadastrados</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icone">
+                👨‍🎓
+            </div>
+
+            <div>
+                <h3 id="totalAlunos">0</h3>
+                <p>Alunos Cadastrados</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icone">
+                📝
+            </div>
+
+            <div>
+                <h3 id="totalMatriculas">0</h3>
+                <p>Matrículas Ativas</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="icone">
+                🏆
+            </div>
+
+            <div>
+                <h3 id="totalCertificados">0</h3>
+                <p>Certificados Emitidos</p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- AÇÕES RÁPIDAS -->
+
+    <section class="acoes-rapidas">
+
+        <h2>Ações Rápidas</h2>
+
+        <div class="grade-acoes">
+
+            <a href="telas/cursos.html" class="acao">
+                <span>📖</span>
+                <h3>Novo Curso</h3>
+                <p>Cadastrar um novo curso.</p>
+            </a>
+
+            <a href="telas/alunos.html" class="acao">
+                <span>👨‍🎓</span>
+                <h3>Novo Aluno</h3>
+                <p>Cadastrar um novo aluno.</p>
+            </a>
+
+            <a href="telas/matriculas.html" class="acao">
+                <span>📝</span>
+                <h3>Matricular</h3>
+                <p>Realizar matrícula em curso.</p>
+            </a>
+
+            <a href="telas/certificados.html" class="acao">
+                <span>🏆</span>
+                <h3>Certificados</h3>
+                <p>Emitir certificados.</p>
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- ÚLTIMAS INFORMAÇÕES -->
+
+    <section class="painel-inferior">
+
+        <div class="quadro">
+
+            <h2>Sobre o Sistema</h2>
+
+            <p>
+                Este sistema foi desenvolvido para o
+                gerenciamento acadêmico de cursos,
+                permitindo o cadastro de alunos,
+                controle de matrículas, lançamento
+                de notas e emissão de certificados.
+            </p>
+
+        </div>
+
+        <div class="quadro">
+
+            <h2>Informações do Projeto</h2>
+
+            <ul>
+                <li>Dupla 09</li>
+                <li>Ricardo Linhares</li>
+                <li>Murilo Passos</li>
+                <li>HTML, CSS e JavaScript</li>
+            </ul>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ===================================================== -->
+<!-- SCRIPTS -->
+<!-- ===================================================== -->
+
+<script src="js/index.js"></script>
+<script src="tema/tema.js"></script>
+
+
+</body>
+
+</html>
