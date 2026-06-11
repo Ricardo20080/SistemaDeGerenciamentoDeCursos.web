@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alunos</title>
 
-    <link rel="stylesheet" href="../css/alunos.css">
-    <link rel="stylesheet" href="../tema/tema.css">
+    <link rel="stylesheet" href="../base/base.css">
+<link rel="stylesheet" href="../tema/tema.css">
+<link rel="stylesheet" href="../css/alunos.css">
+
 </head>
 
 <body>
@@ -59,15 +61,22 @@ CONTEÚDO
 
     <section class="filtro-cursos">
 
-        <input 
-            id="buscaAluno" 
-            type="text"
-            placeholder="Buscar aluno pelo nome..."
-        >
+    <input
+        id="buscaAluno"
+        type="text"
+        placeholder="Buscar aluno pelo nome..."
+        onkeyup="buscarAluno()"
+    >
 
-        <button onclick="buscarAluno()">Buscar</button>
+    <button
+        class="botao-primario"
+        onclick="buscarAluno()">
 
-    </section>
+        Buscar
+
+    </button>
+
+</section>
 
     <!-- =========================
     TABELA
@@ -77,12 +86,14 @@ CONTEÚDO
 
         <table>
             <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>ID Matrícula</th>
-                    <th>Curso</th>
-                </tr>
-            </thead>
+    <tr>
+        <th>Nome</th>
+        <th>ID Matrícula</th>
+        <th>Curso</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+</thead>
 
             <tbody id="listaAlunos"></tbody>
         </table>
@@ -91,8 +102,11 @@ CONTEÚDO
 
 </main>
 
+
+    
+    <script src="../base/storage.js"></script>
 <script src="../tema/tema.js"></script>
-<script src="../js/aluno.js"></script>
+<script src="../js/alunos.js"></script>
 
 </body>
 </html>

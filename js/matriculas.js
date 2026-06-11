@@ -18,6 +18,7 @@ function gerarId() {
 /* =========================
 SALVAR
 ========================= */
+
 function salvarMatricula() {
 
     const m = {
@@ -72,9 +73,11 @@ function excluirMatricula(id) {
 
     render(matriculas);
 }
+
 /* =========================
 RENDER (SEGURADO)
 ========================= */
+
 function render(lista = matriculas) {
 
     const tbody = document.getElementById("lista");
@@ -107,7 +110,6 @@ BUSCAR (FIX DEFINITIVO)
 function buscarMatricula() {
 
     const input = document.getElementById("buscaId");
-
     const id = (input?.value || "").trim();
 
     if (!id) {

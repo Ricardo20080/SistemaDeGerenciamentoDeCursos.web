@@ -1,11 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notas</title>
+
+    <link rel="stylesheet" href="../base/base.css">
+    <link rel="stylesheet" href="../tema/tema.css">
+    <link rel="stylesheet" href="../css/alunos.css">
 </head>
+
 <body>
-    
+
+<aside class="barra-lateral">
+
+    <div>
+        <div class="logo">
+            <h2>📊 Notas</h2>
+            <span>Avaliação de alunos</span>
+        </div>
+
+        <nav class="menu">
+            <a href="../index.html">🏠 Dashboard</a>
+            <a href="cursos.html">📖 Cursos</a>
+            <a href="alunos.html">👨‍🎓 Alunos</a>
+            <a href="matriculas.html">📝 Matrículas</a>
+            <a href="notas.html" class="ativo">📊 Notas</a>
+            <a href="certificados.html">🏆 Certificados</a>
+        </nav>
+    </div>
+<div class="rodape-menu">
+        <button id="alternarTema">🌙 Tema</button>
+    </div>
+
+</aside>
+
+<main class="conteudo">
+
+    <header class="cabecalho">
+        <h1>Notas</h1>
+        <p>Lançamento de notas por disciplina</p>
+    </header>
+
+    <!-- TABELA -->
+    <section class="tabela-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Curso</th>
+                    <th>Status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody id="listaNotas"></tbody>
+        </table>
+
+    </section>
+
+</main>
+
+<!-- MODAL -->
+<div id="modalNotas" class="modal">
+
+    <div class="modal-conteudo">
+
+        <div style="display:flex;justify-content:space-between;">
+            <h2 id="tituloNotas"></h2>
+            <button onclick="fecharNotas()">✕</button>
+        </div>
+
+        <div id="conteudoNotas"></div>
+
+        <h3 id="mediaFinal"></h3>
+
+    </div>
+
+</div>
+
+<script src="../base/storage.js"></script>
+<script src="../tema/tema.js"></script>
+<script src="../js/notas.js"></script>
+
 </body>
 </html>

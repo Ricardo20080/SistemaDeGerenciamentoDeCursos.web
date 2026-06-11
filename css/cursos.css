@@ -1,170 +1,4 @@
 /* =======================================================
-   SISTEMA DE CURSOS - CSS COMPLETO (INDEPENDENTE)
-======================================================= */
-
-/* =======================================================
-   RESET
-======================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* =======================================================
-   BODY
-======================================================= */
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    min-height: 100vh;
-    display: flex;
-}
-
-/* =======================================================
-   VARIÁVEIS (CLARO)
-======================================================= */
-
-:root {
-    --cor-fundo: #f5f7fa;
-    --cor-sidebar: #ffffff;
-    --cor-card: #ffffff;
-
-    --cor-texto: #111827;
-    --cor-texto-secundario: #6b7280;
-
-    --cor-borda: #e5e7eb;
-
-    --cor-destaque: #000000;
-
-    --sombra: 0 4px 12px rgba(0, 0, 0, 0.08);
-    --sombra-hover: 0 12px 30px rgba(0, 0, 0, 0.12);
-
-    --transicao: 0.3s ease;
-}
-
-/* =======================================================
-   SIDEBAR
-======================================================= */
-
-.barra-lateral {
-    width: 280px;
-    min-height: 100vh;
-    background: var(--cor-sidebar);
-    border-right: 1px solid var(--cor-borda);
-    padding: 30px 20px;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    position: fixed;
-    left: 0;
-    top: 0;
-}
-
-.logo {
-    text-align: center;
-}
-
-.logo h2 {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-.logo span {
-    color: var(--cor-texto-secundario);
-    font-size: 14px;
-}
-
-.menu {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: var(--cor-texto);
-    padding: 14px 18px;
-    border-radius: 12px;
-    font-weight: 500;
-
-    display: flex;
-    gap: 12px;
-
-    transition: var(--transicao);
-}
-
-.menu a:hover {
-    background: #f3f4f6;
-    transform: translateX(5px);
-}
-
-.menu a.ativo {
-    background: #111827;
-    color: white;
-}
-
-.rodape-menu {
-    margin-top: 30px;
-}
-
-#alternarTema {
-    width: 100%;
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-
-    background: #111827;
-    color: white;
-}
-
-/* =======================================================
-   CONTEÚDO
-======================================================= */
-
-.conteudo {
-    flex: 1;
-    margin-left: 280px;
-    padding: 35px;
-}
-
-/* =======================================================
-   CABEÇALHO
-======================================================= */
-
-.cabecalho {
-    margin-bottom: 30px;
-}
-
-.cabecalho h1 {
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.cabecalho p {
-    color: var(--cor-texto-secundario);
-}
-
-/* =======================================================
    FORMULÁRIO
 ======================================================= */
 
@@ -188,22 +22,54 @@ body {
     font-weight: 600;
 }
 
-.grupo-formulario input {
+.grupo-formulario input,
+.grupo-formulario textarea,
+.grupo-formulario select {
     padding: 14px;
     border: 1px solid var(--cor-borda);
     border-radius: 12px;
     background: var(--cor-card);
     color: var(--cor-texto);
+    font-size: 15px;
 }
 
-.grupo-formulario input:focus {
+.grupo-formulario textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.grupo-formulario input:focus,
+.grupo-formulario textarea:focus,
+.grupo-formulario select:focus {
     outline: none;
     border-color: #111827;
     box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
 }
 
 /* =======================================================
-   BOTÃO
+   BLOCOS
+======================================================= */
+
+.bloco-formulario {
+    margin-bottom: 35px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+.bloco-formulario:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.bloco-formulario h3 {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* =======================================================
+   BOTÕES
 ======================================================= */
 
 .botao {
@@ -219,16 +85,29 @@ body {
     color: white;
 }
 
+.botao-adicionar {
+    margin-top: 10px;
+    background: #f3f4f6;
+    color: #111827;
+}
+
+.botao-adicionar:hover {
+    transform: translateY(-2px);
+}
+
 /* =======================================================
    PESQUISA
 ======================================================= */
 
 .filtro-cursos {
     margin-bottom: 20px;
+
+    display: flex;
+    gap: 10px;
 }
 
 .filtro-cursos input {
-    width: 100%;
+    flex: 1;
     padding: 14px;
     border-radius: 12px;
     border: 1px solid var(--cor-borda);
@@ -258,7 +137,8 @@ thead {
     color: white;
 }
 
-th, td {
+th,
+td {
     padding: 16px;
     text-align: left;
 }
@@ -268,21 +148,26 @@ td {
 }
 
 tbody tr:hover {
-    background: rgba(0,0,0,0.03);
+    background: rgba(0, 0, 0, 0.03);
 }
 
 /* =======================================================
    AÇÕES
 ======================================================= */
 
+.acao-visualizar,
 .acao-editar,
 .acao-excluir {
     border: none;
     padding: 8px 12px;
     border-radius: 8px;
     cursor: pointer;
-    margin-right: 6px;
     color: white;
+    margin-right: 6px;
+}
+
+.acao-visualizar {
+    background: #059669;
 }
 
 .acao-editar {
@@ -293,121 +178,13 @@ tbody tr:hover {
     background: #dc2626;
 }
 
-
-
-
-.item-estrutura {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.item-estrutura input {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid var(--cor-borda);
-    background: var(--cor-card);
-    color: var(--cor-texto);
-}
-
-.item-estrutura button {
-    background: #dc2626;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.detalhes {
-    padding: 15px;
-    background: rgba(0,0,0,0.03);
-    border-radius: 12px;
-}
-
-.detalhes h4 {
-    margin-bottom: 10px;
-}
-
-
-
-/* =======================================================
-   BLOCOS DO FORMULÁRIO
-======================================================= */
-
-.bloco-formulario {
-    margin-bottom: 35px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid var(--cor-borda);
-}
-
-.bloco-formulario:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.bloco-formulario h3 {
-    margin-bottom: 20px;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-/* =======================================================
-   TEXTAREA E SELECT
-======================================================= */
-
-.grupo-formulario textarea,
-.grupo-formulario select {
-    padding: 14px;
-    border: 1px solid var(--cor-borda);
-    border-radius: 12px;
-    background: var(--cor-card);
-    color: var(--cor-texto);
-    font-size: 15px;
-    resize: vertical;
-    min-height: 48px;
-}
-
-.grupo-formulario textarea {
-    min-height: 120px;
-}
-
-.grupo-formulario textarea:focus,
-.grupo-formulario select:focus {
-    outline: none;
-    border-color: #111827;
-    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
-}
-
-/* =======================================================
-   ESTRUTURA ACADÊMICA
-======================================================= */
-
-.item-estrutura {
-    display: grid;
-    grid-template-columns: 180px 1fr auto;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.item-estrutura select,
-.item-estrutura input {
-    padding: 12px;
-    border: 1px solid var(--cor-borda);
-    border-radius: 10px;
-    background: var(--cor-card);
-    color: var(--cor-texto);
-}
-
 /* =======================================================
    DISCIPLINAS
 ======================================================= */
 
 .item-disciplina {
     display: grid;
-    grid-template-columns: 2fr 1fr 150px auto;
+    grid-template-columns: 2fr 1fr 150px 1fr auto;
     gap: 10px;
     margin-bottom: 12px;
 }
@@ -422,38 +199,42 @@ tbody tr:hover {
 }
 
 /* =======================================================
-   BOTÕES DE ADICIONAR
+   ESTRUTURA
 ======================================================= */
 
-.botao-adicionar {
-    margin-top: 10px;
-    background: #f3f4f6;
-    color: #111827;
+.item-estrutura {
+    display: grid;
+    grid-template-columns: 180px 1fr auto;
+    gap: 10px;
+    margin-bottom: 12px;
 }
 
-.botao-adicionar:hover {
-    transform: translateY(-2px);
+.item-estrutura input,
+.item-estrutura select {
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    background: var(--cor-card);
+    color: var(--cor-texto);
+}
+
+.item-estrutura button {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 /* =======================================================
-   RESUMO DO CURSO
+   TEXTO DE AJUDA
 ======================================================= */
 
-.card-resumo {
-    background: var(--cor-card);
-    border: 1px solid var(--cor-borda);
-    border-radius: 16px;
-    padding: 20px;
-    margin-top: 15px;
-}
-
-.card-resumo h4 {
-    margin-bottom: 10px;
-}
-
-.card-resumo p {
+.texto-ajuda {
+    margin-bottom: 15px;
     color: var(--cor-texto-secundario);
-    line-height: 1.6;
+    line-height: 1.5;
 }
 
 /* =======================================================
@@ -489,35 +270,40 @@ tbody tr:hover {
 }
 
 /* =======================================================
-   BOTÃO VISUALIZAR
+   RESUMO
 ======================================================= */
 
-.acao-visualizar {
-    background: #059669;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-right: 6px;
+.card-resumo {
+    background: var(--cor-card);
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.card-resumo h4 {
+    margin-bottom: 10px;
+}
+
+.card-resumo p {
+    color: var(--cor-texto-secundario);
+    line-height: 1.6;
 }
 
 /* =======================================================
-   MODAL DE DETALHES
+   MODAL
 ======================================================= */
 
 .modal {
     position: fixed;
     inset: 0;
-
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,0.5);
 
     display: none;
     justify-content: center;
     align-items: center;
 
     padding: 20px;
-
     z-index: 1000;
 }
 
@@ -532,43 +318,47 @@ tbody tr:hover {
     padding: 30px;
 
     max-height: 90vh;
-
     overflow-y: auto;
 
     box-shadow: var(--sombra-hover);
 }
 
+/* =======================================================
+   DETALHES
+======================================================= */
+
+.detalhes {
+    padding: 15px;
+    background: rgba(0,0,0,0.03);
+    border-radius: 12px;
+}
+
+.detalhes h4 {
+    margin-bottom: 10px;
+}
 
 /* =======================================================
    RESPONSIVO
 ======================================================= */
 
+@media (max-width: 900px) {
+
+    .item-disciplina,
+    .item-estrutura {
+        grid-template-columns: 1fr;
+    }
+
+}
+
 @media (max-width: 768px) {
-
-    .barra-lateral {
-        width: 100%;
-        position: relative;
-    }
-
-    .conteudo {
-        margin-left: 0;
-    }
 
     table {
         display: block;
         overflow-x: auto;
     }
-}
 
-
-@media (max-width: 900px) {
-
-    .item-disciplina {
-        grid-template-columns: 1fr;
-    }
-
-    .item-estrutura {
-        grid-template-columns: 1fr;
+    .filtro-cursos {
+        flex-direction: column;
     }
 
 }

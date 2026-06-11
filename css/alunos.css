@@ -1,169 +1,69 @@
 /* =======================================================
-   RESET BASE (SEM CONFLITO)
+   ALUNOS
 ======================================================= */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    transition: background-color .3s ease, color .3s ease, border-color .3s ease;
-}
-
-html {
-    scroll-behavior: smooth;
+.cabecalho {
+    margin-bottom: 30px;
 }
 
 /* =======================================================
-   TEMA
-======================================================= */
-
-:root {
-    --cor-fundo: #f5f7fa;
-    --cor-sidebar: #ffffff;
-    --cor-card: #ffffff;
-
-    --cor-texto: #111827;
-    --cor-texto-secundario: #6b7280;
-
-    --cor-borda: #e5e7eb;
-
-    --cor-destaque: #111827;
-
-    --sombra: 0 4px 12px rgba(0,0,0,.08);
-    --sombra-hover: 0 12px 30px rgba(0,0,0,.12);
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto);
-    min-height: 100vh;
-    display: flex;
-}
-
-/* TEMA ESCURO */
-body.escuro {
-    --cor-fundo: #0f1115;
-    --cor-sidebar: #161b22;
-    --cor-card: #1d232d;
-
-    --cor-texto: #ffffff;
-    --cor-texto-secundario: #9ca3af;
-
-    --cor-borda: #2f3742;
-
-    --cor-destaque: #ffffff;
-
-    --sombra: 0 4px 12px rgba(0,0,0,.4);
-    --sombra-hover: 0 12px 30px rgba(0,0,0,.5);
-}
-
-/* =======================================================
-   LAYOUT
-======================================================= */
-
-.barra-lateral {
-    width: 280px;
-    min-height: 100vh;
-    background: var(--cor-sidebar);
-    border-right: 1px solid var(--cor-borda);
-    padding: 30px 20px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.conteudo {
-    flex: 1;
-    margin-left: 280px;
-    padding: 35px;
-}
-
-/* =======================================================
-   MENU
-======================================================= */
-
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.menu a {
-    color: var(--cor-texto);
-    text-decoration: none;
-    padding: 12px 16px;
-    border-radius: 10px;
-}
-
-.menu a:hover {
-    background: rgba(0,0,0,.05);
-}
-
-.menu a.ativo {
-    background: var(--cor-destaque);
-    color: #fff;
-}
-
-/* =======================================================
-   BOTÕES (REGRA ÚNICA — SEM CONFLITO)
-======================================================= */
-
-button {
-    font-family: inherit;
-    cursor: pointer;
-
-    border-radius: 12px;
-    padding: 10px 14px;
-
-    border: 1px solid var(--cor-borda);
-    background: var(--cor-card);
-    color: var(--cor-texto);
-
-    transition: .2s ease;
-}
-
-/* hover geral */
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--sombra-hover);
-}
-
-/* botão primário */
-.botao-primario {
-    background: var(--cor-destaque);
-    color: #fff;
-    border: none;
-}
-
-/* =======================================================
-   🔥 BUSCAR (CORRIGIDO DEFINITIVAMENTE)
+   BUSCA
 ======================================================= */
 
 .filtro-cursos {
     display: flex;
-    gap: 10px;
-    margin: 20px 0;
+    gap: 12px;
+    margin-bottom: 25px;
 }
 
 .filtro-cursos input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
+
+    padding: 14px 16px;
+
     border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+
     background: var(--cor-card);
     color: var(--cor-texto);
+
+    font-size: 15px;
+
+    box-shadow: var(--sombra);
 }
 
-/* IMPORTANTE: sem cor fixa */
+.filtro-cursos input:focus {
+    outline: none;
+
+    border-color: var(--cor-destaque);
+
+    box-shadow:
+        0 0 0 3px rgba(0,0,0,.08),
+        var(--sombra);
+}
+
 .filtro-cursos button {
-    background: var(--cor-destaque);
-    color: #fff;
+    min-width: 130px;
+
     border: none;
+
+    border-radius: 12px;
+
+    padding: 14px 20px;
+
+    background: var(--cor-destaque);
+
+    color: white;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.filtro-cursos button:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-hover);
 }
 
 /* =======================================================
@@ -172,9 +72,13 @@ button:hover {
 
 .tabela-container {
     background: var(--cor-card);
+
     border: 1px solid var(--cor-borda);
-    border-radius: 16px;
+
+    border-radius: 18px;
+
     overflow: hidden;
+
     box-shadow: var(--sombra);
 }
 
@@ -185,24 +89,86 @@ table {
 
 thead {
     background: var(--cor-destaque);
-    color: #fff;
+    color: white;
 }
 
-th, td {
-    padding: 14px;
+th {
+    padding: 16px;
     text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 16px;
     border-bottom: 1px solid var(--cor-borda);
 }
 
+tbody tr:hover {
+    background: rgba(0,0,0,.03);
+}
+
 /* =======================================================
-   SIDEBAR BOTÃO TEMA
+   BOTÃO EXCLUIR
 ======================================================= */
 
-#alternarTema {
-    width: 100%;
-    background: var(--cor-destaque);
-    color: #fff;
+.botao-excluir {
+    background: #dc2626;
+    color: white;
+
     border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.botao-excluir:hover {
+    transform: translateY(-2px);
+}
+
+/* =======================================================
+   SEM REGISTROS
+======================================================= */
+
+.sem-registros {
+    text-align: center;
+
+    padding: 30px;
+
+    color: var(--cor-texto-secundario);
+}
+
+/* =======================================================
+   BOTÃO EXCLUIR
+======================================================= */
+
+.botao-excluir {
+    border: none;
+
+    background: #dc2626;
+    color: white;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: .2s ease;
+}
+
+.botao-excluir:hover {
+    background: #b91c1c;
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-hover);
 }
 
 /* =======================================================
@@ -210,16 +176,21 @@ th, td {
 ======================================================= */
 
 @media (max-width: 768px) {
-    .barra-lateral {
-        position: relative;
-        width: 100%;
-    }
-
-    .conteudo {
-        margin-left: 0;
-    }
 
     .filtro-cursos {
         flex-direction: column;
     }
+
+    .filtro-cursos button {
+        width: 100%;
+    }
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 600px;
+    }
+
 }

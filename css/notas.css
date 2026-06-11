@@ -1,11 +1,170 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =======================================================
+   NOTAS.CSS
+======================================================= */
 
-    transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
+/* =======================================================
+   STATUS
+======================================================= */
+
+.status-aprovado {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: #dcfce7;
+    color: #166534;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-reprovado {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: #fee2e2;
+    color: #991b1b;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.status-pendente {
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: #f3f4f6;
+    color: #6b7280;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =======================================================
+   BOTÃO LANÇAR NOTAS
+======================================================= */
+
+.botao-notas {
+    background: #2563eb;
+    color: white;
+
+    border: none;
+
+    padding: 10px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+.botao-notas:hover {
+    transform: translateY(-2px);
+
+    box-shadow: var(--sombra-hover);
+}
+
+/* =======================================================
+   MODAL
+======================================================= */
+
+.modal-conteudo {
+    width: 90%;
+    max-width: 700px;
+
+    background: var(--cor-card);
+
+    padding: 25px;
+
+    border-radius: 18px;
+
+    box-shadow: var(--sombra-hover);
+}
+
+.modal-conteudo h2 {
+    margin-bottom: 20px;
+}
+
+/* =======================================================
+   DISCIPLINAS
+======================================================= */
+
+#conteudoNotas {
+    margin-top: 15px;
+}
+
+.campo-nota {
+    display: flex;
+    flex-direction: column;
+
+    gap: 6px;
+
+    margin-bottom: 16px;
+}
+
+.campo-nota label {
+    font-weight: 600;
+}
+
+.campo-nota input {
+    padding: 12px;
+
+    border: 1px solid var(--cor-borda);
+
+    border-radius: 10px;
+
+    background: var(--cor-card);
+    color: var(--cor-texto);
+}
+
+/* =======================================================
+   RESUMO
+======================================================= */
+
+.mensagem-status {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background: var(--cor-fundo);
+
+    border: 1px solid var(--cor-borda);
+
+    font-weight: 600;
+
+    text-align: center;
+}
+
+#mediaFinal {
+    margin-top: 15px;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+/* =======================================================
+   RESPONSIVO
+======================================================= */
+
+@media (max-width: 600px) {
+
+    .modal-conteudo {
+        width: 95%;
+        padding: 20px;
+    }
+
 }
