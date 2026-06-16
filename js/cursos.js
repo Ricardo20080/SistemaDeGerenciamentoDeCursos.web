@@ -127,27 +127,61 @@ function salvarCurso() {
 
 function renderizarCursos(lista = cursos) {
 
-    const tbody = document.getElementById("listaCursos");
+    const tbody =
+        document.getElementById("listaCursos");
+
     if (!tbody) return;
 
-    tbody.innerHTML = "";
+    if (!lista.length) {
 
-    lista.forEach(curso => {
-
-        tbody.innerHTML += `
+        tbody.innerHTML = `
             <tr>
-                <td>${curso.nome}</td>
-                <td>${curso.modelo}</td>
-                <td>${curso.cargaHoraria}h</td>
-                <td>${curso.professor}</td>
-                <td>
-                    <button class="botao" onclick="visualizarCurso(${curso.id})">Ver</button>
-                    <button class="botao" onclick="editarCurso(${curso.id})">Editar</button>
-                    <button class="botao" onclick="excluirCurso(${curso.id})">Excluir</button>
+                <td colspan="5">
+                    Nenhum curso cadastrado.
                 </td>
             </tr>
         `;
-    });
+
+        return;
+    }
+
+    tbody.innerHTML = lista.map(curso => `
+        <tr>
+            <td>${curso.nome}</td>
+
+            <td>${curso.modelo || "-"}</td>
+
+            <td>${curso.cargaHoraria || 0}h</td>
+
+            <td>${curso.professor || "-"}</td>
+
+            <td>
+                <button
+                    class="botao"
+                    onclick="visualizarCurso(${curso.id})">
+
+                    Ver
+
+                </button>
+
+                <button
+                    class="botao"
+                    onclick="editarCurso(${curso.id})">
+
+                    Editar
+
+                </button>
+
+                <button
+                    class="botao"
+                    onclick="excluirCurso(${curso.id})">
+
+                    Excluir
+
+                </button>
+            </td>
+        </tr>
+    `).join("");
 }
 
 /* ===============================
@@ -262,6 +296,51 @@ function editarCurso(id) {
 
     cursoEditando = id;
 
+const container =
+    document.getElementById("disciplinasContainer");
+
+container.innerHTML = "";
+
+(curso.disciplinas || []).forEach(d => {
+
+    const div = document.createElement("div");
+
+    div.className = "item-disciplina";
+
+    div.innerHTML = `
+        <input
+            type="text"
+            placeholder="Nome da disciplina"
+            value="${d.nome || ""}">
+
+        <input
+            type="text"
+            placeholder="Professor"
+            value="${d.professor || ""}">
+
+        <input
+            type="number"
+            placeholder="Carga Horária"
+            value="${d.cargaHoraria || ""}">
+
+        <input
+            type="text"
+            placeholder="Estrutura"
+            value="${d.estrutura || ""}">
+
+        <button
+            type="button"
+            class="botao"
+            onclick="this.parentElement.remove()">
+
+            Remover
+
+        </button>
+    `;
+
+    container.appendChild(div);
+});
+
     document.getElementById("nomeCurso").value = curso.nome;
     document.getElementById("descricaoCurso").value = curso.descricao;
     document.getElementById("professor").value = curso.professor;
@@ -283,8 +362,10 @@ function editarCurso(id) {
 function limparFormulario() {
 
     document.getElementById("formCurso")?.reset();
-    document.getElementById("estruturaContainer").innerHTML = "";
-    document.getElementById("disciplinasContainer").innerHTML = "";
+
+    document.getElementById(
+        "disciplinasContainer"
+    ).innerHTML = "";
 
     cursoEditando = null;
 }
