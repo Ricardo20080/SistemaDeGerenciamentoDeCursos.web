@@ -17,27 +17,35 @@ function carregarCertificados() {
                 c.nome === m.curso
             );
 
-        const notaAluno = notas.find(n => n.id === m.id);
+        const notaAluno =
+            notas.find(n =>
+                n.id === m.id
+            );
 
-return {
-    id: m.id,
-    nome: m.nome,
-    curso: m.curso,
+        return {
+            id: m.id,
+            nome: m.nome,
+            curso: m.curso,
 
-    cargaHoraria:
-        curso?.cargaHoraria || 0,
+            cargaHoraria:
+                curso?.cargaHoraria || 0,
 
-    textoCertificado:
-        curso?.textoCertificado ||
-        "Concluiu o curso com aproveitamento.",
+            textoCertificado:
+                curso?.textoCertificado ||
+                "Concluiu o curso com aproveitamento.",
 
-    status:
-        notaAluno
-            ? calcularStatusCertificado(notaAluno)
-            : "PENDENTE"
-};
+            status:
+                notaAluno
+                    ? calcularStatusCertificado(notaAluno)
+                    : "PENDENTE"
+        };
 
     });
+
+    Storage.set(
+        "certificados",
+        certificados
+    );
 
     renderizarCertificados();
 }
@@ -76,7 +84,7 @@ function calcularStatusCertificado(aluno) {
 RENDER
 ========================= */
 
-function renderizarCertificados() {
+function renderizarCertificados(lista = certificados) {
 
     const tbody =
         document.getElementById("listaCertificados");
@@ -85,7 +93,7 @@ function renderizarCertificados() {
 
     tbody.innerHTML = "";
 
-    certificados.forEach(c => {
+    lista.forEach(c => {
 
         tbody.innerHTML += `
 
@@ -98,25 +106,71 @@ function renderizarCertificados() {
                 <td>${c.cargaHoraria}h</td>
 
                 <td>
-    <span class="status-${c.status.toLowerCase()}">
-        ${c.status}
-    </span>
-</td>
+                    <span class="status-${c.status.toLowerCase()}">
+                        ${c.status}
+                    </span>
+                </td>
+
                 <td>
 
-    <button
-    class="botao-certificado"
-    onclick="gerarCertificado('${c.id}')"
-    ${c.status !== "APROVADO" ? "disabled" : ""}>
-    📄 Gerar PDF
-</button>
+                    <button
+                        class="botao-certificado"
+                        onclick="gerarCertificado('${c.id}')"
+                        ${c.status !== "APROVADO"
+                            ? "disabled"
+                            : ""}>
 
-</td>
+                        📄 Gerar PDF
+
+                    </button>
+
+                </td>
 
             </tr>
 
         `;
     });
+}
+
+
+
+function buscarCertificado() {
+
+    const termo =
+        document.getElementById("buscaCertificado")
+        ?.value
+        ?.toLowerCase()
+        || "";
+
+    if (!termo) {
+
+        renderizarCertificados();
+
+        return;
+    }
+
+    const filtrados =
+        certificados.filter(c =>
+
+            (c.nome || "")
+                .toLowerCase()
+                .includes(termo)
+
+            ||
+
+            (c.curso || "")
+                .toLowerCase()
+                .includes(termo)
+
+            ||
+
+            String(c.id)
+                .toLowerCase()
+                .includes(termo)
+
+        );
+
+    renderizarCertificados(filtrados);
 }
 
 /* =========================

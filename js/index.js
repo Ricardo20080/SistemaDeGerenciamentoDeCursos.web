@@ -17,7 +17,7 @@ function atualizarDashboard() {
     const certificados =
         JSON.parse(localStorage.getItem("certificados")) || [];
 
-    // alunos = derivados das matrículas (SEM STORAGE)
+    // alunos = derivados das matrículas
     const alunos = new Map();
 
     matriculas.forEach(m => {
@@ -39,7 +39,7 @@ function atualizarDashboard() {
         totalCursos.textContent = cursos.length;
 
     if (totalAlunos)
-        totalAlunos.textContent = alunos.size; // 🔥 CORRETO
+        totalAlunos.textContent = alunos.size; 
 
     if (totalMatriculas)
         totalMatriculas.textContent = matriculas.length;
