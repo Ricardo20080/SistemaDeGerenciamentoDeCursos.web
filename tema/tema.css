@@ -1,3 +1,36 @@
+:root {
+
+    --cor-fundo: #f4f7fb;
+
+    --cor-sidebar: #ffffff;
+
+    --cor-card: #ffffff;
+
+    --cor-texto: #1f2937;
+
+    --cor-texto-secundario: #6b7280;
+
+    --cor-borda: #e5e7eb;
+
+    --cor-destaque: #111827;
+
+    --cor-menu-hover: #f3f4f6;
+
+    --cor-menu-ativo: #111827;
+
+    --cor-menu-ativo-texto: #ffffff;
+
+    --cor-botao: #111827;
+
+    --cor-botao-texto: #ffffff;
+
+    --sombra: 0 4px 12px rgba(0,0,0,0.08);
+
+    --sombra-hover: 0 12px 30px rgba(0,0,0,0.12);
+
+    --transicao: all 0.3s ease;
+}
+
 /* =======================================================
    MODO ESCURO
 ======================================================= */
@@ -18,11 +51,20 @@ body.escuro {
 
     --cor-destaque: #ffffff;
 
-    --sombra: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --cor-menu-hover: rgba(255,255,255,0.08);
 
-    --sombra-hover: 0 12px 30px rgba(0, 0, 0, 0.5);
+    --cor-menu-ativo: #ffffff;
+
+    --cor-menu-ativo-texto: #000000;
+
+    --cor-botao: #ffffff;
+
+    --cor-botao-texto: #000000;
+
+    --sombra: 0 4px 12px rgba(0,0,0,0.4);
+
+    --sombra-hover: 0 12px 30px rgba(0,0,0,0.5);
 }
-
 /* =======================================================
    AJUSTES EXTRAS MODO ESCURO
 ======================================================= */
