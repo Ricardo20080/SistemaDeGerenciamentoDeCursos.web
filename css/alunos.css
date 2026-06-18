@@ -2,6 +2,18 @@
    ALUNOS
 ======================================================= */
 
+:root {
+
+    --aluno-azul: #2563eb;
+
+    --aluno-laranja: #f97316;
+
+}
+
+/* =======================================================
+   CABEÇALHO
+======================================================= */
+
 .cabecalho {
     margin-bottom: 30px;
 }
@@ -11,57 +23,75 @@
 ======================================================= */
 
 .filtro-cursos {
+
     display: flex;
+
     gap: 12px;
+
     margin-bottom: 25px;
 }
 
 .filtro-cursos input {
+
     flex: 1;
 
     padding: 14px 16px;
 
     border: 1px solid var(--cor-borda);
-    border-radius: 12px;
+
+    border-radius: 14px;
 
     background: var(--cor-card);
+
     color: var(--cor-texto);
 
     font-size: 15px;
 
     box-shadow: var(--sombra);
+
+    transition: var(--transicao);
 }
 
 .filtro-cursos input:focus {
+
     outline: none;
 
-    border-color: var(--cor-destaque);
+    border-color: var(--aluno-azul);
 
     box-shadow:
-        0 0 0 3px rgba(0,0,0,.08),
-        var(--sombra);
+        0 0 0 4px rgba(37,99,235,.12);
 }
 
 .filtro-cursos button {
+
     min-width: 130px;
 
     border: none;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
     padding: 14px 20px;
 
-    background: var(--cor-destaque);
+    background:
+        linear-gradient(
+            135deg,
+            var(--aluno-laranja),
+            #fb923c
+        );
 
     color: white;
 
     font-weight: 600;
 
     cursor: pointer;
+
+    transition: var(--transicao);
 }
 
 .filtro-cursos button:hover {
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
 
     box-shadow: var(--sombra-hover);
 }
@@ -71,11 +101,14 @@
 ======================================================= */
 
 .tabela-container {
+
     background: var(--cor-card);
 
     border: 1px solid var(--cor-borda);
 
-    border-radius: 18px;
+    border-top: 4px solid var(--aluno-azul);
+
+    border-radius: 24px;
 
     overflow: hidden;
 
@@ -83,28 +116,49 @@
 }
 
 table {
+
     width: 100%;
+
     border-collapse: collapse;
 }
 
 thead {
-    background: var(--cor-destaque);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--aluno-azul),
+            #3b82f6
+        );
+
     color: white;
 }
 
 th {
+
     padding: 16px;
+
     text-align: left;
+
     font-weight: 600;
 }
 
 td {
+
     padding: 16px;
+
     border-bottom: 1px solid var(--cor-borda);
 }
 
+tbody tr {
+
+    transition: var(--transicao);
+}
+
 tbody tr:hover {
-    background: rgba(0,0,0,.03);
+
+    background:
+        rgba(37,99,235,.05);
 }
 
 /* =======================================================
@@ -112,10 +166,12 @@ tbody tr:hover {
 ======================================================= */
 
 .botao-excluir {
-    background: #dc2626;
-    color: white;
 
     border: none;
+
+    background: #ef4444;
+
+    color: white;
 
     padding: 10px 14px;
 
@@ -124,10 +180,18 @@ tbody tr:hover {
     cursor: pointer;
 
     font-weight: 600;
+
+    transition: var(--transicao);
 }
 
 .botao-excluir:hover {
-    transform: translateY(-2px);
+
+    background: #dc2626;
+
+    transform:
+        translateY(-2px);
+
+    box-shadow: var(--sombra-hover);
 }
 
 /* =======================================================
@@ -135,40 +199,44 @@ tbody tr:hover {
 ======================================================= */
 
 .sem-registros {
+
     text-align: center;
 
-    padding: 30px;
+    padding: 40px;
 
     color: var(--cor-texto-secundario);
+
+    background: var(--cor-card);
+
+    border: 1px dashed var(--cor-borda);
+
+    border-radius: 20px;
 }
 
 /* =======================================================
-   BOTÃO EXCLUIR
+   BADGE DE TOTAL
 ======================================================= */
 
-.botao-excluir {
-    border: none;
+.total-alunos {
 
-    background: #dc2626;
-    color: white;
+    display: inline-flex;
 
-    padding: 10px 14px;
+    align-items: center;
 
-    border-radius: 10px;
+    gap: 8px;
 
-    cursor: pointer;
+    padding: 8px 14px;
 
-    font-weight: 600;
+    border-radius: 999px;
 
-    transition: .2s ease;
-}
+    background:
+        rgba(37,99,235,.08);
 
-.botao-excluir:hover {
-    background: #b91c1c;
+    color: var(--aluno-azul);
 
-    transform: translateY(-2px);
+    font-size: 13px;
 
-    box-shadow: var(--sombra-hover);
+    font-weight: 700;
 }
 
 /* =======================================================
@@ -178,18 +246,22 @@ tbody tr:hover {
 @media (max-width: 768px) {
 
     .filtro-cursos {
+
         flex-direction: column;
     }
 
     .filtro-cursos button {
+
         width: 100%;
     }
 
     .tabela-container {
+
         overflow-x: auto;
     }
 
     table {
+
         min-width: 600px;
     }
 

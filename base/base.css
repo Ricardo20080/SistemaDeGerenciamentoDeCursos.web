@@ -8,9 +8,10 @@
     box-sizing: border-box;
 
     transition:
-        background-color 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease;
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
 }
 
 html {
@@ -31,7 +32,7 @@ body {
 ======================================================= */
 
 .barra-lateral {
-    width: 280px;
+    width: 300px;
     min-height: 100vh;
     background: var(--cor-sidebar);
     border-right: 1px solid var(--cor-borda);
@@ -82,13 +83,13 @@ body {
     margin-top: 40px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
 .menu a {
     text-decoration: none;
     color: var(--cor-texto);
-    padding: 14px 18px;
+    padding: 15px 18px;
     border-radius: 12px;
     font-weight: 500;
     display: flex;
@@ -103,8 +104,10 @@ body {
 }
 
 .menu a.ativo {
-    background: #111827;
-    color: white;
+    background: var(--cor-menu-ativo);
+    color: var(--cor-menu-ativo-texto);
+
+    box-shadow: var(--sombra);
 }
 
 /* =======================================================
@@ -123,12 +126,12 @@ body {
     width: 100%;
     border: none;
     padding: 14px;
-    border-radius: 12px;
+    border-radius: 14px;
     cursor: pointer;
     font-weight: 600;
     font-size: 14px;
-    background: #111827;
-    color: white;
+    background: var(--cor-botao);
+    color: var(--cor-botao-texto);
     transition: var(--transicao);
 }
 
@@ -143,7 +146,7 @@ body {
 
 .conteudo {
     flex: 1;
-    margin-left: 280px;
+    margin-left: 300px;
     padding: 35px;
 }
 
@@ -159,8 +162,8 @@ body {
 }
 
 .cabecalho h1 {
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 36px;
+    font-weight: 800;
     margin-bottom: 6px;
 }
 
@@ -169,18 +172,7 @@ body {
     font-size: 15px;
 }
 
-/* =======================================================
-   USUÁRIO
-======================================================= */
 
-.usuario {
-    background: var(--cor-card);
-    border: 1px solid var(--cor-borda);
-    padding: 12px 20px;
-    border-radius: 12px;
-    box-shadow: var(--sombra);
-    font-weight: 500;
-}
 
 /* =======================================================
    PADRÕES
@@ -204,11 +196,11 @@ a {
 }
 
 ::-webkit-scrollbar-track {
-    background: #e5e7eb;
+    background: var(--cor-borda);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #111827;
+    background: var(--cor-destaque);;
     border-radius: 20px;
 }
 

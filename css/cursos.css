@@ -1,49 +1,88 @@
 /* =======================================================
+   CURSOS
+======================================================= */
+
+:root {
+
+    --curso-azul: #2563eb;
+
+    --curso-laranja: #f97316;
+
+}
+
+/* =======================================================
    FORMULÁRIO
 ======================================================= */
 
 .formulario {
+
     background: var(--cor-card);
+
     border: 1px solid var(--cor-borda);
-    border-radius: 18px;
-    padding: 25px;
+
+    border-top: 4px solid var(--curso-laranja);
+
+    border-radius: 24px;
+
+    padding: 30px;
+
     box-shadow: var(--sombra);
-    margin-bottom: 25px;
+
+    margin-bottom: 30px;
 }
 
 .grupo-formulario {
+
     display: flex;
+
     flex-direction: column;
+
     margin-bottom: 18px;
 }
 
 .grupo-formulario label {
+
     margin-bottom: 8px;
+
     font-weight: 600;
 }
 
 .grupo-formulario input,
 .grupo-formulario textarea,
 .grupo-formulario select {
+
     padding: 14px;
+
     border: 1px solid var(--cor-borda);
-    border-radius: 12px;
+
+    border-radius: 14px;
+
     background: var(--cor-card);
+
     color: var(--cor-texto);
+
     font-size: 15px;
+
+    transition: var(--transicao);
 }
 
 .grupo-formulario textarea {
+
     min-height: 120px;
+
     resize: vertical;
 }
 
 .grupo-formulario input:focus,
 .grupo-formulario textarea:focus,
 .grupo-formulario select:focus {
+
     outline: none;
-    border-color: #111827;
-    box-shadow: 0 0 0 3px rgba(17, 24, 39, 0.12);
+
+    border-color: var(--curso-azul);
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
 }
 
 /* =======================================================
@@ -51,20 +90,29 @@
 ======================================================= */
 
 .bloco-formulario {
+
     margin-bottom: 35px;
+
     padding-bottom: 25px;
+
     border-bottom: 1px solid var(--cor-borda);
 }
 
 .bloco-formulario:last-child {
+
     border-bottom: none;
+
     margin-bottom: 0;
+
     padding-bottom: 0;
 }
 
 .bloco-formulario h3 {
+
     margin-bottom: 20px;
+
     font-size: 20px;
+
     font-weight: 700;
 }
 
@@ -73,26 +121,50 @@
 ======================================================= */
 
 .botao {
+
     border: none;
+
     padding: 14px 22px;
-    border-radius: 12px;
+
+    border-radius: 14px;
+
     cursor: pointer;
+
     font-weight: 600;
+
+    transition: var(--transicao);
+}
+
+.botao:hover {
+
+    transform:
+        translateY(-2px);
 }
 
 .botao-primario {
-    background: #111827;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--curso-azul),
+            #3b82f6
+        );
+
     color: white;
 }
 
 .botao-adicionar {
-    margin-top: 10px;
-    background: #f3f4f6;
-    color: #111827;
-}
 
-.botao-adicionar:hover {
-    transform: translateY(-2px);
+    margin-top: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--curso-laranja),
+            #fb923c
+        );
+
+    color: white;
 }
 
 /* =======================================================
@@ -100,18 +172,26 @@
 ======================================================= */
 
 .filtro-cursos {
+
     margin-bottom: 20px;
 
     display: flex;
-    gap: 10px;
+
+    gap: 12px;
 }
 
 .filtro-cursos input {
+
     flex: 1;
+
     padding: 14px;
-    border-radius: 12px;
+
+    border-radius: 14px;
+
     border: 1px solid var(--cor-borda);
+
     background: var(--cor-card);
+
     color: var(--cor-texto);
 }
 
@@ -120,35 +200,61 @@
 ======================================================= */
 
 .tabela-container {
+
     background: var(--cor-card);
+
     border: 1px solid var(--cor-borda);
-    border-radius: 18px;
+
+    border-top: 4px solid var(--curso-azul);
+
+    border-radius: 24px;
+
     overflow: hidden;
+
     box-shadow: var(--sombra);
 }
 
 table {
+
     width: 100%;
+
     border-collapse: collapse;
 }
 
 thead {
-    background: #111827;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--curso-azul),
+            #3b82f6
+        );
+
     color: white;
 }
 
 th,
 td {
+
     padding: 16px;
+
     text-align: left;
 }
 
 td {
+
     border-bottom: 1px solid var(--cor-borda);
 }
 
+tbody tr {
+
+    transition: var(--transicao);
+}
+
 tbody tr:hover {
-    background: rgba(0, 0, 0, 0.03);
+
+    background:
+        rgba(37,99,235,.05);
 }
 
 /* =======================================================
@@ -158,24 +264,43 @@ tbody tr:hover {
 .acao-visualizar,
 .acao-editar,
 .acao-excluir {
+
     border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
     cursor: pointer;
+
     color: white;
+
     margin-right: 6px;
+
+    transition: var(--transicao);
 }
 
 .acao-visualizar {
-    background: #059669;
+
+    background: #10b981;
 }
 
 .acao-editar {
-    background: #2563eb;
+
+    background: var(--curso-azul);
 }
 
 .acao-excluir {
-    background: #dc2626;
+
+    background: #ef4444;
+}
+
+.acao-visualizar:hover,
+.acao-editar:hover,
+.acao-excluir:hover {
+
+    transform:
+        translateY(-2px);
 }
 
 /* =======================================================
@@ -183,18 +308,28 @@ tbody tr:hover {
 ======================================================= */
 
 .item-disciplina {
+
     display: grid;
-    grid-template-columns: 2fr 1fr 150px 1fr auto;
+
+    grid-template-columns:
+        2fr 1fr 150px 1fr auto;
+
     gap: 10px;
+
     margin-bottom: 12px;
 }
 
 .item-disciplina input,
 .item-disciplina select {
+
     padding: 12px;
+
     border: 1px solid var(--cor-borda);
-    border-radius: 10px;
+
+    border-radius: 12px;
+
     background: var(--cor-card);
+
     color: var(--cor-texto);
 }
 
@@ -203,27 +338,43 @@ tbody tr:hover {
 ======================================================= */
 
 .item-estrutura {
+
     display: grid;
-    grid-template-columns: 180px 1fr auto;
+
+    grid-template-columns:
+        180px 1fr auto;
+
     gap: 10px;
+
     margin-bottom: 12px;
 }
 
 .item-estrutura input,
 .item-estrutura select {
+
     padding: 12px;
+
     border: 1px solid var(--cor-borda);
-    border-radius: 10px;
+
+    border-radius: 12px;
+
     background: var(--cor-card);
+
     color: var(--cor-texto);
 }
 
 .item-estrutura button {
-    background: #dc2626;
+
+    background: #ef4444;
+
     color: white;
+
     border: none;
+
     padding: 8px 12px;
-    border-radius: 8px;
+
+    border-radius: 10px;
+
     cursor: pointer;
 }
 
@@ -232,9 +383,12 @@ tbody tr:hover {
 ======================================================= */
 
 .texto-ajuda {
+
     margin-bottom: 15px;
+
     color: var(--cor-texto-secundario);
-    line-height: 1.5;
+
+    line-height: 1.6;
 }
 
 /* =======================================================
@@ -242,30 +396,43 @@ tbody tr:hover {
 ======================================================= */
 
 .badge {
+
     display: inline-block;
-    padding: 6px 12px;
+
+    padding: 7px 14px;
+
     border-radius: 999px;
+
     font-size: 12px;
-    font-weight: 600;
+
+    font-weight: 700;
 }
 
 .badge-modular {
+
     background: #dbeafe;
+
     color: #1e40af;
 }
 
 .badge-semestral {
+
     background: #dcfce7;
+
     color: #166534;
 }
 
 .badge-trimestral {
+
     background: #fef3c7;
+
     color: #92400e;
 }
 
 .badge-bimestral {
+
     background: #ede9fe;
+
     color: #6d28d9;
 }
 
@@ -274,19 +441,29 @@ tbody tr:hover {
 ======================================================= */
 
 .card-resumo {
+
     background: var(--cor-card);
+
     border: 1px solid var(--cor-borda);
-    border-radius: 16px;
-    padding: 20px;
+
+    border-left: 4px solid var(--curso-laranja);
+
+    border-radius: 20px;
+
+    padding: 24px;
+
     margin-top: 15px;
 }
 
 .card-resumo h4 {
+
     margin-bottom: 10px;
 }
 
 .card-resumo p {
+
     color: var(--cor-texto-secundario);
+
     line-height: 1.6;
 }
 
@@ -295,29 +472,40 @@ tbody tr:hover {
 ======================================================= */
 
 .modal {
+
     position: fixed;
+
     inset: 0;
-    background: rgba(0,0,0,0.5);
+
+    background: rgba(0,0,0,.5);
 
     display: none;
+
     justify-content: center;
+
     align-items: center;
 
     padding: 20px;
+
     z-index: 1000;
 }
 
 .modal-conteudo {
+
     width: 100%;
-    max-width: 800px;
+
+    max-width: 850px;
 
     background: var(--cor-card);
 
-    border-radius: 20px;
+    border-top: 4px solid var(--curso-azul);
 
-    padding: 30px;
+    border-radius: 24px;
+
+    padding: 32px;
 
     max-height: 90vh;
+
     overflow-y: auto;
 
     box-shadow: var(--sombra-hover);
@@ -328,12 +516,20 @@ tbody tr:hover {
 ======================================================= */
 
 .detalhes {
-    padding: 15px;
-    background: rgba(0,0,0,0.03);
-    border-radius: 12px;
+
+    padding: 18px;
+
+    background:
+        rgba(37,99,235,.05);
+
+    border-left:
+        4px solid var(--curso-azul);
+
+    border-radius: 14px;
 }
 
 .detalhes h4 {
+
     margin-bottom: 10px;
 }
 
@@ -345,6 +541,7 @@ tbody tr:hover {
 
     .item-disciplina,
     .item-estrutura {
+
         grid-template-columns: 1fr;
     }
 
@@ -353,11 +550,14 @@ tbody tr:hover {
 @media (max-width: 768px) {
 
     table {
+
         display: block;
+
         overflow-x: auto;
     }
 
     .filtro-cursos {
+
         flex-direction: column;
     }
 
@@ -366,6 +566,7 @@ tbody tr:hover {
 @media (max-width: 600px) {
 
     .modal-conteudo {
+
         padding: 20px;
     }
 
