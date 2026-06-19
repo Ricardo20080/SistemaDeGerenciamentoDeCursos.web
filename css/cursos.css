@@ -541,7 +541,6 @@ tbody tr:hover {
 
     .item-disciplina,
     .item-estrutura {
-
         grid-template-columns: 1fr;
     }
 
@@ -549,25 +548,34 @@ tbody tr:hover {
 
 @media (max-width: 768px) {
 
-    table {
+    .filtro-cursos {
+        flex-direction: column;
+        gap: 10px;
+    }
 
-        display: block;
+    .filtro-cursos input,
+    .filtro-cursos select,
+    .filtro-cursos button {
+        width: 100%;
+    }
 
+    .tabela-container {
         overflow-x: auto;
     }
 
-    .filtro-cursos {
-
-        flex-direction: column;
+    table {
+        min-width: 700px;
     }
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
     .modal-conteudo {
-
+        width: 95%;
         padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
 
 }

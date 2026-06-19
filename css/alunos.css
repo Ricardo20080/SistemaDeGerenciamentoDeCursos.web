@@ -246,23 +246,22 @@ tbody tr:hover {
 @media (max-width: 768px) {
 
     .filtro-cursos {
-
         flex-direction: column;
+        gap: 10px;
     }
 
+    .filtro-cursos input,
+    .filtro-cursos select,
     .filtro-cursos button {
-
         width: 100%;
     }
 
     .tabela-container {
-
         overflow-x: auto;
     }
 
     table {
-
-        min-width: 600px;
+        min-width: 650px;
     }
 
 }

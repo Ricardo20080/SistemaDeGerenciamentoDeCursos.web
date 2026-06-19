@@ -279,26 +279,25 @@ tbody tr:hover {
 /* =======================================================
    RESPONSIVO
 ======================================================= */
-
 @media (max-width: 768px) {
 
     .tabela-container {
-
         overflow-x: auto;
     }
 
     table {
-
-        min-width: 600px;
+        min-width: 650px;
     }
+
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
 
     .modal-conteudo {
-
         width: 95%;
-
         padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
+
 }

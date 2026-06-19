@@ -267,15 +267,34 @@ MODAL
 /* =========================
 RESPONSIVO
 ========================= */
-
 @media (max-width: 900px) {
 
     .filtro-cursos {
         flex-direction: column;
+        gap: 10px;
     }
+
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+
+    .filtro-cursos input,
+    .filtro-cursos select,
+    .filtro-cursos button {
+        width: 100%;
+    }
+
+    .tabela-container {
+        overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
+    }
+
+}
+
+@media (max-width: 480px) {
 
     .formulario,
     .tabela-container {
@@ -287,6 +306,10 @@ RESPONSIVO
     }
 
     #modal > div {
+        width: 95%;
         padding: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
     }
+
 }

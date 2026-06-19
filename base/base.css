@@ -214,24 +214,84 @@ a {
 
 @media (max-width: 900px) {
 
+    .barra-lateral {
+        width: 250px;
+        padding: 25px 15px;
+    }
+
+    .conteudo {
+        margin-left: 250px;
+        padding: 25px;
+    }
+
     .cabecalho {
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 15px;
+    }
+
+    .cabecalho h1 {
+        font-size: 30px;
     }
 
 }
 
 @media (max-width: 768px) {
 
+    body {
+        flex-direction: column;
+    }
+
     .barra-lateral {
         width: 100%;
-        position: relative;
         min-height: auto;
+        position: relative;
+        padding: 15px;
+    }
+
+    .menu {
+        margin-top: 20px;
+    }
+
+    .menu a {
+        padding: 12px 14px;
+    }
+
+    .logo-img {
+        width: 50px;
     }
 
     .conteudo {
         margin-left: 0;
+        padding: 20px;
+    }
+
+    .cabecalho {
+        margin-bottom: 25px;
+    }
+
+    .cabecalho h1 {
+        font-size: 26px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .barra-lateral {
+        padding: 12px;
+    }
+
+    .conteudo {
+        padding: 15px;
+    }
+
+    .cabecalho h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 20px;
     }
 
 }

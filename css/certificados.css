@@ -291,20 +291,22 @@ tbody tr:hover {
 @media (max-width: 768px) {
 
     .filtro-certificados {
-
         flex-direction: column;
+        gap: 10px;
     }
 
+    .filtro-certificados input,
+    .filtro-certificados select,
     .filtro-certificados button {
-
         width: 100%;
     }
 
-    table {
-
-        display: block;
-
+    .tabela-container {
         overflow-x: auto;
+    }
+
+    table {
+        min-width: 650px;
     }
 
 }

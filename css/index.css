@@ -204,7 +204,28 @@ p {
    RESPONSIVO
 ======================================================= */
 
+@media (max-width: 900px) {
+
+    .card {
+        padding: 40px 28px;
+    }
+
+    .logo {
+        width: 210px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+}
+
 @media (max-width: 768px) {
+
     .card {
         padding: 35px 22px;
     }
@@ -220,9 +241,11 @@ p {
     h2 {
         font-size: 1.1rem;
     }
+
 }
 
 @media (max-width: 480px) {
+
     h1 {
         font-size: 2.1rem;
     }
@@ -230,4 +253,5 @@ p {
     p {
         font-size: .95rem;
     }
+
 }
